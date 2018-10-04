@@ -1,0 +1,25 @@
+{
+    "name": "licorne",
+    "version": "1.0.0",
+    "description": "unicorn",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack --progress --colors --mode development",
+        "build:release": "webpack --progress --colors --mode production",
+        "start": "webpack-dev-server --content-base ./dist",
+        "semantic-release": "semantic-release"
+    },
+    "keywords": [
+    "minbot",
+    "unicorn"
+  ],
+    "author": "Lag",
+    "license": "ISC",
+    "dependencies": {
+        "vtk.js": "^7.8.5",
+        "gpu.js": "^1.6.0"
+    },
+    "devDependencies": {
+        "kw-web-suite": "^6.2.0"
+    }
+}
