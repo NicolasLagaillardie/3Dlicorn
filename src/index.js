@@ -10,6 +10,7 @@ import vtkFullScreenRenderWindow from 'vtk.js/Sources/Rendering/Misc/FullScreenR
 import vtkMapper from 'vtk.js/Sources/Rendering/Core/Mapper';
 import vtkURLExtract from 'vtk.js/Sources/Common/Core/URLExtract';
 import vtkXMLPolyDataReader from 'vtk.js/Sources/IO/XML/XMLPolyDataReader';
+import vtkViewport from 'vtk.js/Sources/Rendering/Core/Viewport';
 
 import {
     ColorMode,
@@ -34,7 +35,7 @@ import GPU, {
 // GPU tests
 // ----------------------------------------------------------------------------
 
-const gpu = new GPU();
+/*const gpu = new GPU();
 
 const fullArray = gpu.createKernel(function () {
     return this.thread.x;
@@ -75,11 +76,11 @@ while (result.length > 1) {
     const first = result.slice(0, result.length / 2);
     const second = result.slice(result.length / 2);
     maxi.push(kernel(first, second));
-    result = maxi[maxi.length-1];
+    result = maxi[maxi.length - 1];
 }
 
 console.log(result);
-console.log(maxi);
+console.log(maxi);*/
 
 // ----------------------------------------------------------------------------
 // VTK init
@@ -203,6 +204,23 @@ function createViewer(container) {
     });
     renderer = fullScreenRenderer.getRenderer();
     renderWindow = fullScreenRenderer.getRenderWindow();
+
+    renderer.setBackground(0, 1, 0, 1);
+    renderer.setBackground2(1, 0, 1);
+    //renderer.setGradientBackground(true);
+    
+    const viewPort = vtkViewport.newInstance();
+
+    console.log(fullScreenRenderer);
+/*    console.log(fullScreenRenderer.getRenderer().getDraw());
+    console.log(fullScreenRenderer.getRenderer().getViewport());
+    console.log(fullScreenRenderer.getRenderer().getViewProps());
+    console.log(fullScreenRenderer.getRenderer().getBackground());
+    console.log(fullScreenRenderer.getRenderer().getBackground2());
+    console.log(fullScreenRenderer.getRenderer().getBackgroundTexture());*/
+    console.log(fullScreenRenderer.getRenderer());  
+    console.log(fullScreenRenderer.getRenderer().getViewProps());  
+    
     renderWindow.getInteractor().setDesiredUpdateRate(15);
 
     container.appendChild(rootControllerContainer);
