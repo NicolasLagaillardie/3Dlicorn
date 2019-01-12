@@ -12,7 +12,7 @@ import vtkSkyboxReader from 'vtk.js/Sources/IO/Misc/SkyboxReader';
 import vtkURLExtract from 'vtk.js/Sources/Common/Core/URLExtract';
 // import vtkMobileVR from 'vtk.js/Sources/Common/System/MobileVR';
 
-import style from './SkyboxViewer.mcss';
+import style from './SkyboxViewer.module.css';
 
 // ----------------------------------------------
 // Possible URL parameters to look for:
@@ -411,7 +411,7 @@ if (userParams.fileURL) {
   const progressCallback = (progressEvent) => {
     if (progressEvent.lengthComputable) {
       const percent = Math.floor(
-        100 * progressEvent.loaded / progressEvent.total
+        (100 * progressEvent.loaded) / progressEvent.total
       );
       progressContainer.innerHTML = `Loading ${percent}%`;
     } else {

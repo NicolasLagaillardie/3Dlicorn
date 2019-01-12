@@ -39,7 +39,7 @@ const ACTIONS = {
     gaussian.xBias =
       originalGaussian.xBias - (originalXY[0] - x) / gaussian.height;
     gaussian.yBias =
-      originalGaussian.yBias + 4 * (originalXY[1] - y) / gaussian.height;
+      originalGaussian.yBias + (4 * (originalXY[1] - y)) / gaussian.height;
     // Clamps
     gaussian.xBias = Math.max(-1, Math.min(1, gaussian.xBias));
     gaussian.yBias = Math.max(0, Math.min(2, gaussian.yBias));
@@ -525,7 +525,7 @@ function vtkPiecewiseGaussianWidget(publicAPI, model) {
           model.selectedGaussian = gaussianIdx;
 
           // Fake active action
-          setImmediate(() => {
+          macro.setImmediate(() => {
             publicAPI.onDown(x, y);
             model.dragAction = {
               position: [0, 0],

@@ -25,6 +25,7 @@ function vtkLookupTableProxy(publicAPI, model) {
   publicAPI.setPresetName = (presetName) => {
     if (model.presetName !== presetName) {
       model.presetName = presetName;
+      model.mode = Mode.Preset;
       publicAPI.applyMode();
     }
   };
@@ -157,4 +158,4 @@ export const newInstance = macro.newInstance(extend, 'vtkLookupTableProxy');
 
 // ----------------------------------------------------------------------------
 
-export default { newInstance, extend };
+export default { newInstance, extend, Mode, Defaults };

@@ -16,7 +16,7 @@ import vtkVolumeMapper from 'vtk.js/Sources/Rendering/Core/VolumeMapper';
 import vtkXMLImageDataReader from 'vtk.js/Sources/IO/XML/XMLImageDataReader';
 import vtkFPSMonitor from 'vtk.js/Sources/Interaction/UI/FPSMonitor';
 
-import style from './VolumeViewer.mcss';
+import style from './VolumeViewer.module.css';
 
 let autoInit = true;
 const userParams = vtkURLExtract.extractURLParameters();
@@ -135,6 +135,11 @@ function createViewer(rootContainer, fileContents, options) {
   const isBackgroundDark = background[0] + background[1] + background[2] < 1.5;
   controllerWidget.setContainer(rootContainer);
   controllerWidget.setupContent(renderWindow, actor, isBackgroundDark);
+
+  // setUpContent above sets the size to the container.
+  // We need to set the size after that.
+  // controllerWidget.setExpanded(false);
+
   fullScreenRenderer.setResizeCallback(({ width, height }) => {
     // 2px padding + 2x1px boder + 5px edge = 14
     if (width > 414) {
@@ -194,7 +199,7 @@ export function load(container, options) {
     const progressCallback = (progressEvent) => {
       if (progressEvent.lengthComputable) {
         const percent = Math.floor(
-          100 * progressEvent.loaded / progressEvent.total
+          (100 * progressEvent.loaded) / progressEvent.total
         );
         progressContainer.innerHTML = `Loading ${percent}%`;
       } else {

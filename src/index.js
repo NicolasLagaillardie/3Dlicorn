@@ -22,65 +22,10 @@ import style from './GeometryViewer.mcss';
 import show from '../media/show.png';
 import hide from '../media/hide.png';
 
-import GPU, {
-    input
-} from 'gpu.js';
-
 
 // ----------------------------------------------------------------------------
 // Start code
 // ----------------------------------------------------------------------------
-
-// ----------------------------------------------------------------------------
-// GPU tests
-// ----------------------------------------------------------------------------
-
-/*const gpu = new GPU();
-
-const fullArray = gpu.createKernel(function () {
-    return this.thread.x;
-}).setOutput([64]);
-
-
-const testArray = fullArray();
-let confirmArray = Array(testArray.length).fill(0);
-const keptPoints = [2, 3];
-
-const myFunc = gpu.createKernel(function (array, testPoint) {
-    if (array[this.thread.x] === testPoint) {
-        return 1;
-    }
-}).setOutput([testArray.length]).setLoopMaxIterations(1);
-
-const confirm = gpu.createKernel(function (array, keptPoints, maxi) {
-    if (array[this.thread.x] === keptPoints[this.thread.y]) {
-        return array[this.thread.x];
-    } else {
-        return maxi;
-    }
-}).setOutput([testArray.length]).setLoopMaxIterations(1);
-
-confirmArray = myFunc(testArray, 0);
-console.log(confirmArray);
-
-let result = confirmArray;
-let maxi = [result];
-
-while (result.length > 1) {
-
-    const kernel = gpu.createKernel(function (a, b) {
-            return a[this.thread.x] + b[this.thread.x] - 1;
-        })
-        .setOutput([parseInt(result.length / 2) + result.length % 2]);
-
-    const first = result.slice(0, result.length / 2);
-    const second = result.slice(result.length / 2);
-    maxi.push(kernel(first, second));
-    result = maxi[maxi.length - 1];
-}
-
-console.log(result);
-console.log(maxi);*/
 
 // ----------------------------------------------------------------------------
 // VTK init
@@ -211,15 +156,15 @@ function createViewer(container) {
     
     const viewPort = vtkViewport.newInstance();
 
-    console.log(fullScreenRenderer);
-/*    console.log(fullScreenRenderer.getRenderer().getDraw());
+/*    console.log(fullScreenRenderer);
+    console.log(fullScreenRenderer.getRenderer().getDraw());
     console.log(fullScreenRenderer.getRenderer().getViewport());
     console.log(fullScreenRenderer.getRenderer().getViewProps());
     console.log(fullScreenRenderer.getRenderer().getBackground());
     console.log(fullScreenRenderer.getRenderer().getBackground2());
-    console.log(fullScreenRenderer.getRenderer().getBackgroundTexture());*/
+    console.log(fullScreenRenderer.getRenderer().getBackgroundTexture());
     console.log(fullScreenRenderer.getRenderer());  
-    console.log(fullScreenRenderer.getRenderer().getViewProps());  
+    console.log(fullScreenRenderer.getRenderer().getViewProps());*/  
     
     renderWindow.getInteractor().setDesiredUpdateRate(15);
 

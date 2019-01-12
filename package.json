@@ -10,16 +10,16 @@
         "semantic-release": "semantic-release"
     },
     "keywords": [
-    "minbot",
-    "unicorn"
-  ],
+        "minbot",
+        "unicorn"
+    ],
     "author": "Lag",
     "license": "ISC",
     "dependencies": {
-        "vtk.js": "^7.8.5",
-        "gpu.js": "^1.6.0"
+        "aws-sdk": "^2.387.0",
+        "vtk.js": "^8.3.2"
     },
     "devDependencies": {
-        "kw-web-suite": "^6.2.0"
+        "kw-web-suite": "^8.0.0"
     }
 }
